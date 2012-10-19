@@ -28,11 +28,11 @@ module Environment
     begin
       load_libs
     rescue LoadError
-      ENV[ 'BUNDLE_GEMFILE' ] ||= File.expand_path 'Gemfile'
+      ENV[ 'BUNDLE_GEMFILE' ] ||= "#{ ROOT }/Gemfile"
       require 'rubygems'
       require 'bundler/setup'
 
-      Bunder.require \
+      Bundler.require \
         :default,
         ENV[ 'RACK_ENV' ]
 
